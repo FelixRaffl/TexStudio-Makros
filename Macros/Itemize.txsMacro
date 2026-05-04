@@ -1,0 +1,14 @@
+{
+    "abbrev": "",
+    "description": "Itemize list environment",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Itemize",
+    "shortcut": "",
+    "tag": [
+        "\\begin{itemize}",
+        "\t\\item %|",
+        "\\end{itemize}"
+    ],
+    "trigger": "@item"
+}

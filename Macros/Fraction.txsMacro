@@ -1,0 +1,12 @@
+{
+    "abbrev": "",
+    "description": "Standard mathematical fraction",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Fraction",
+    "shortcut": "",
+    "tag": [
+        "\\frac{%<%>}{%<%>}%|"
+    ],
+    "trigger": "@frac"
+}

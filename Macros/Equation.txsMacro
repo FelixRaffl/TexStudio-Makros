@@ -1,0 +1,15 @@
+{
+    "abbrev": "",
+    "description": "Standard Equation Environment with Label",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Equation",
+    "shortcut": "",
+    "tag": [
+        "\\begin{equation}",
+        "\t\\label{eq:%<label%>}",
+        "\t%|",
+        "\\end{equation}"
+    ],
+    "trigger": "@eq"
+}

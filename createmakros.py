@@ -1,6 +1,29 @@
 import json
 import os
 
+# 1. Read the usepackages.tex file dynamically
+packages_file = "usepackages.tex"
+packages_tag = []
+
+try:
+    with open(packages_file, "r", encoding="utf-8") as f:
+        for line in f:
+            clean_line = line.strip()
+            if clean_line:  # Ignore empty lines
+                packages_tag.append(clean_line)
+    
+    # Add the cursor drop at the very end
+    packages_tag.append("%|")
+
+except FileNotFoundError:
+    # Fallback just in case the file is missing
+    packages_tag = [
+        "% ERROR: usepackages.tex not found!",
+        "% Please make sure the file is in the same folder as this Python script.",
+        "%|"
+    ]
+
+# 2. Define all macros (including the new dynamic one)
 macros_data = {
     "Figure": {
         "abbrev": "",
@@ -86,18 +109,77 @@ macros_data = {
             "\\end{center}"
         ],
         "trigger": "@code"
+    },
+    "Fraction": {
+        "abbrev": "",
+        "description": "Standard mathematical fraction",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Fraction",
+        "shortcut": "",
+        "tag": [
+            "\\frac{%<%>}{%<%>}%|"
+        ],
+        "trigger": "@frac"
+    },
+    "Itemize": {
+        "abbrev": "",
+        "description": "Itemize list environment",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Itemize",
+        "shortcut": "",
+        "tag": [
+            "\\begin{itemize}",
+            "\t\\item %|",
+            "\\end{itemize}"
+        ],
+        "trigger": "@item"
+    },
+    "Partial_Derivative": {
+        "abbrev": "",
+        "description": "Fraction for partial derivatives",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Partial Derivative",
+        "shortcut": "",
+        "tag": [
+            "\\frac{\\partial %<%>}{\\partial %<%>}%|"
+        ],
+        "trigger": "@pder"
+    },
+    "Equation": {
+        "abbrev": "",
+        "description": "Standard Equation Environment with Label",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Equation",
+        "shortcut": "",
+        "tag": [
+            "\\begin{equation}",
+            "\t\\label{eq:%<label%>}",
+            "\t%|",
+            "\\end{equation}"
+        ],
+        "trigger": "@eq"
+    },
+    "Packages": {
+        "abbrev": "",
+        "description": "Auto-inserts packages from usepackages.tex",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Insert Packages",
+        "shortcut": "",
+        "tag": packages_tag,
+        "trigger": "@pkg"
     }
 }
 
-# Ordnername definieren
+# 3. Create folder and files
 folder_name = "Macros"
-
-# Ordner erstellen, falls er nicht existiert
 os.makedirs(folder_name, exist_ok=True)
 
-# Generiert eine separate Datei für jedes Macro im neuen Ordner
 for filename, file_content in macros_data.items():
-    # Pfad zusammensetzen (Ordner + Dateiname)
     full_filename = os.path.join(folder_name, f"{filename}.txsMacro")
     
     with open(full_filename, "w", encoding="utf-8") as f:

@@ -1,0 +1,14 @@
+{
+    "abbrev": "",
+    "description": "Auto-inserts packages from usepackages.tex",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Insert Packages",
+    "shortcut": "",
+    "tag": [
+        "% ERROR: usepackages.tex not found!",
+        "% Please make sure the file is in the same folder as this Python script.",
+        "%|"
+    ],
+    "trigger": "@pkg"
+}

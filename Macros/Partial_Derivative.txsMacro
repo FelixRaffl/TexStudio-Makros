@@ -1,0 +1,12 @@
+{
+    "abbrev": "",
+    "description": "Fraction for partial derivatives",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Partial Derivative",
+    "shortcut": "",
+    "tag": [
+        "\\frac{\\partial %<%>}{\\partial %<%>}%|"
+    ],
+    "trigger": "@pder"
+}
