@@ -1,0 +1,18 @@
+{
+    "abbrev": "",
+    "description": "Standard Figure",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Figure",
+    "shortcut": "",
+    "tag": [
+        "\\begin{figure}[H]",
+        "\t\\centering",
+        "\t\\includegraphics[width=%<1\\textwidth%>]{%<Grafiken/pfad.pdf%>}",
+        "\t\\caption{%<Caption%>}",
+        "\t\\label{fig:%<label%>}",
+        "\\end{figure}",
+        "%|"
+    ],
+    "trigger": "@fig"
+}

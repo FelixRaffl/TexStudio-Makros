@@ -1,0 +1,18 @@
+{
+    "abbrev": "",
+    "description": "Code snippet in centered minipage",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Code Listing",
+    "shortcut": "",
+    "tag": [
+        "\\begin{center}",
+        "\t\\begin{minipage}{0.9\\linewidth}",
+        "\t\\begin{lstlisting}[caption={%<Caption%>}, label={code:%<label%>}]",
+        "\t%|",
+        "\t\\end{lstlisting}",
+        "\t\\end{minipage}",
+        "\\end{center}"
+    ],
+    "trigger": "@code"
+}

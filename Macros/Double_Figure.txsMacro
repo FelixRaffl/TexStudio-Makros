@@ -1,0 +1,26 @@
+{
+    "abbrev": "",
+    "description": "Two Side-by-Side Figures with Minipages",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Double Figure",
+    "shortcut": "",
+    "tag": [
+        "\\begin{figure}[H]",
+        "\t\\centering",
+        "\t\\begin{minipage}[t]{0.48\\textwidth}",
+        "\t\t\\centering",
+        "\t\t\\includegraphics[height=\\textwidth]{%<Grafiken/pfad1.pdf%>}",
+        "\t\\end{minipage}",
+        "\t\\hfill",
+        "\t\\begin{minipage}[t]{0.48\\textwidth}",
+        "\t\t\\centering",
+        "\t\t\\includegraphics[height=\\textwidth]{%<Grafiken/pfad2.pdf%>}",
+        "\t\\end{minipage}",
+        "\t\\caption[%<Kurzes Caption f\u00fcr Verzeichnis%>]{%<Langes Caption%>}",
+        "\t\\label{fig:%<label%>}",
+        "\\end{figure}",
+        "%|"
+    ],
+    "trigger": "@doublefig"
+}
