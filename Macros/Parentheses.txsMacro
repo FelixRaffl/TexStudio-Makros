@@ -1,0 +1,12 @@
+{
+    "abbrev": "",
+    "description": "Auto-scaling parentheses",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Parentheses",
+    "shortcut": "",
+    "tag": [
+        "\\left(%|\\right)"
+    ],
+    "trigger": "@par"
+}

@@ -6,8 +6,19 @@
     "name": "Insert Packages",
     "shortcut": "",
     "tag": [
-        "% ERROR: usepackages.tex not found!",
-        "% Please make sure the file is in the same folder as this Python script.",
+        "\\usepackage[utf8]{inputenc}",
+        "\\usepackage[T1]{fontenc}",
+        "\\usepackage{mismath}",
+        "\\usepackage{listings}",
+        "\\usepackage{xcolor}",
+        "\\usepackage{tabularx}",
+        "\\usepackage{multirow}",
+        "\\usepackage{makecell}",
+        "\\usepackage{subcaption}",
+        "\\usepackage{ifthen}",
+        "\\usepackage{siunitx}",
+        "\\usepackage{float}",
+        "\\usepackage{hyperref}",
         "%|"
     ],
     "trigger": "@pkg"

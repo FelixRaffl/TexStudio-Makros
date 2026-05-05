@@ -6,7 +6,7 @@
     "name": "Fraction",
     "shortcut": "",
     "tag": [
-        "\\frac{%<%>}{%<%>}%|"
+        "\\frac{%|}{}"
     ],
     "trigger": "@frac"
 }

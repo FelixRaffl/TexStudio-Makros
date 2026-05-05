@@ -23,7 +23,7 @@ except FileNotFoundError:
         "%|"
     ]
 
-# 2. Define all macros (including the new dynamic one)
+# 2. Define all static macros
 macros_data = {
     "Figure": {
         "abbrev": "",
@@ -35,36 +35,12 @@ macros_data = {
         "tag": [
             "\\begin{figure}[H]",
             "\t\\centering",
-            "\t\\includegraphics[width=%<1\\textwidth%>]{%<Grafiken/pfad.pdf%>}",
-            "\t\\caption{%<Caption%>}",
-            "\t\\label{fig:%<label%>}",
-            "\\end{figure}",
-            "%|"
+            "\t\\includegraphics[width=]{%|}",
+            "\t\\caption{}",
+            "\t\\label{fig:}",
+            "\\end{figure}"
         ],
-        "trigger": "@fig"
-    },
-    "Table": {
-        "abbrev": "",
-        "description": "Standard Table with footnotesize",
-        "formatVersion": 1,
-        "menu": "Custom",
-        "name": "Table",
-        "shortcut": "",
-        "tag": [
-            "\\begin{table}[H]",
-            "\t\\centering",
-            "\t\\caption{%<Caption%>}",
-            "\t\\label{tab:%<label%>}",
-            "\t\\footnotesize ",
-            "\t\\begin{tabular}{%<ll%>}",
-            "\t\\hline",
-            "\t%<Header 1%> & %<Header 2%> \\\\ \\hline",
-            "\t%| & \\\\",
-            "\t\\hline",
-            "\t\\end{tabular}",
-            "\\end{table}"
-        ],
-        "trigger": "@tab"
+        "trigger": "@fig1"
     },
     "Double_Figure": {
         "abbrev": "",
@@ -78,19 +54,18 @@ macros_data = {
             "\t\\centering",
             "\t\\begin{minipage}[t]{0.48\\textwidth}",
             "\t\t\\centering",
-            "\t\t\\includegraphics[height=\\textwidth]{%<Grafiken/pfad1.pdf%>}",
+            "\t\t\\includegraphics[height=\\textwidth]{%|}",
             "\t\\end{minipage}",
             "\t\\hfill",
             "\t\\begin{minipage}[t]{0.48\\textwidth}",
             "\t\t\\centering",
-            "\t\t\\includegraphics[height=\\textwidth]{%<Grafiken/pfad2.pdf%>}",
+            "\t\t\\includegraphics[height=\\textwidth]{}",
             "\t\\end{minipage}",
-            "\t\\caption[%<Kurzes Caption für Verzeichnis%>]{%<Langes Caption%>}",
-            "\t\\label{fig:%<label%>}",
-            "\\end{figure}",
-            "%|"
+            "\t\\caption[]{}",
+            "\t\\label{fig:}",
+            "\\end{figure}"
         ],
-        "trigger": "@doublefig"
+        "trigger": "@fig2"
     },
     "Code_Listing": {
         "abbrev": "",
@@ -102,7 +77,7 @@ macros_data = {
         "tag": [
             "\\begin{center}",
             "\t\\begin{minipage}{0.9\\linewidth}",
-            "\t\\begin{lstlisting}[caption={%<Caption%>}, label={code:%<label%>}]",
+            "\t\\begin{lstlisting}[caption={}, label={code:}]",
             "\t%|",
             "\t\\end{lstlisting}",
             "\t\\end{minipage}",
@@ -118,7 +93,7 @@ macros_data = {
         "name": "Fraction",
         "shortcut": "",
         "tag": [
-            "\\frac{%<%>}{%<%>}%|"
+            "\\frac{%|}{}"
         ],
         "trigger": "@frac"
     },
@@ -144,7 +119,7 @@ macros_data = {
         "name": "Partial Derivative",
         "shortcut": "",
         "tag": [
-            "\\frac{\\partial %<%>}{\\partial %<%>}%|"
+            "\\frac{\\partial {}}{\\partial {}}%|"
         ],
         "trigger": "@pder"
     },
@@ -157,11 +132,35 @@ macros_data = {
         "shortcut": "",
         "tag": [
             "\\begin{equation}",
-            "\t\\label{eq:%<label%>}",
+            "\t\\label{eq:}",
             "\t%|",
             "\\end{equation}"
         ],
         "trigger": "@eq"
+    },
+    "Quantity": {
+        "abbrev": "",
+        "description": "siunitx quantity command",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Quantity",
+        "shortcut": "",
+        "tag": [
+            "\\qty{%|}{}"
+        ],
+        "trigger": "@qty"
+    },
+    "Parentheses": {
+        "abbrev": "",
+        "description": "Auto-scaling parentheses",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Parentheses",
+        "shortcut": "",
+        "tag": [
+            "\\left(%|\\right)"
+        ],
+        "trigger": "@par"
     },
     "Packages": {
         "abbrev": "",
@@ -175,10 +174,48 @@ macros_data = {
     }
 }
 
-# 3. Create folder and files
+# 3. Dynamically generate Tables for 1 to 6 columns
+for i in range(1, 7):
+    col_def = "l" * i  # Creates 'l', 'll', 'lll', etc.
+    header_row = "\t" + " & ".join([""] * i) + " \\\\ \\hline"
+    data_row = "\t%|" + (" & " * (i - 1)) + " \\\\"
+    
+    macros_data[f"Table_{i}Col"] = {
+        "abbrev": "",
+        "description": f"Standard Table with {i} Columns",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": f"Table {i} Columns",
+        "shortcut": "",
+        "tag": [
+            "\\begin{table}[H]",
+            "\t\\centering",
+            "\t\\caption{}",
+            "\t\\label{tab:}",
+            "\t\\footnotesize ",
+            f"\t\\begin{{tabular}}{{{col_def}}}",
+            "\t\\hline",
+            header_row,
+            data_row,
+            "\t\\hline",
+            "\t\\end{tabular}",
+            "\\end{table}"
+        ],
+        "trigger": f"@tab{i}"
+    }
+
+# 4. Create folder and clean up old files
 folder_name = "Macros"
 os.makedirs(folder_name, exist_ok=True)
 
+# Delete existing .txsMacro files in the folder so only the new ones remain
+print(f"Räume alten Ordner '{folder_name}' auf...")
+for file in os.listdir(folder_name):
+    if file.endswith(".txsMacro"):
+        file_path = os.path.join(folder_name, file)
+        os.remove(file_path)
+
+# 5. Write the new files
 for filename, file_content in macros_data.items():
     full_filename = os.path.join(folder_name, f"{filename}.txsMacro")
     

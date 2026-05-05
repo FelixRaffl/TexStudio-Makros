@@ -1,0 +1,12 @@
+{
+    "abbrev": "",
+    "description": "siunitx quantity command",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Quantity",
+    "shortcut": "",
+    "tag": [
+        "\\qty{%|}{}"
+    ],
+    "trigger": "@qty"
+}

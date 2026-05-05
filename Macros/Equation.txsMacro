@@ -7,7 +7,7 @@
     "shortcut": "",
     "tag": [
         "\\begin{equation}",
-        "\t\\label{eq:%<label%>}",
+        "\t\\label{eq:}",
         "\t%|",
         "\\end{equation}"
     ],

@@ -1,0 +1,23 @@
+{
+    "abbrev": "",
+    "description": "Standard Table with 6 Columns",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Table 6 Columns",
+    "shortcut": "",
+    "tag": [
+        "\\begin{table}[H]",
+        "\t\\centering",
+        "\t\\caption{}",
+        "\t\\label{tab:}",
+        "\t\\footnotesize ",
+        "\t\\begin{tabular}{llllll}",
+        "\t\\hline",
+        "\t &  &  &  &  &  \\\\ \\hline",
+        "\t%| &  &  &  &  &  \\\\",
+        "\t\\hline",
+        "\t\\end{tabular}",
+        "\\end{table}"
+    ],
+    "trigger": "@tab6"
+}

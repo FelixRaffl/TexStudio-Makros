@@ -8,7 +8,7 @@
     "tag": [
         "\\begin{center}",
         "\t\\begin{minipage}{0.9\\linewidth}",
-        "\t\\begin{lstlisting}[caption={%<Caption%>}, label={code:%<label%>}]",
+        "\t\\begin{lstlisting}[caption={}, label={code:}]",
         "\t%|",
         "\t\\end{lstlisting}",
         "\t\\end{minipage}",

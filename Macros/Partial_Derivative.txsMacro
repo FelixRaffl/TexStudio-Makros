@@ -6,7 +6,7 @@
     "name": "Partial Derivative",
     "shortcut": "",
     "tag": [
-        "\\frac{\\partial %<%>}{\\partial %<%>}%|"
+        "\\frac{\\partial {}}{\\partial {}}%|"
     ],
     "trigger": "@pder"
 }
