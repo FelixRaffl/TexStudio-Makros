@@ -171,6 +171,18 @@ macros_data = {
         "shortcut": "",
         "tag": packages_tag,
         "trigger": "@pkg"
+    },
+    "Quad_Text": {
+        "abbrev": "",
+        "description": "Inserts text surrounded by quads",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Quad Text",
+        "shortcut": "",
+        "tag": [
+            "\\quad \\text{%|} \\quad"
+        ],
+        "trigger": "@qt"
     }
 }
 
