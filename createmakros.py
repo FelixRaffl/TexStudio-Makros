@@ -35,7 +35,7 @@ macros_data = {
         "tag": [
             "\\begin{figure}[H]",
             "\t\\centering",
-            "\t\\includegraphics[width=]{%|}",
+            "\t\\includegraphics[width=0.7\\textwidth]{%|}",
             "\t\\caption{}",
             "\t\\label{fig:}",
             "\\end{figure}"
@@ -182,7 +182,31 @@ macros_data = {
         "tag": [
             "\\quad \\text{%|} \\quad"
         ],
-        "trigger": "@qt"
+        "trigger": "@qat"
+    },
+    "Subscript": {
+        "abbrev": "",
+        "description": "Standard subscript",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Subscript",
+        "shortcut": "",
+        "tag": [
+            "%|_{}"
+        ],
+        "trigger": "@sub"
+    },
+    "Math_Subscript": {
+        "abbrev": "",
+        "description": "Math mode subscript",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Math Subscript",
+        "shortcut": "",
+        "tag": [
+            "$%|_{}$"
+        ],
+        "trigger": "@msub"
     }
 }
 

@@ -1,0 +1,12 @@
+{
+    "abbrev": "",
+    "description": "Math mode subscript",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Math Subscript",
+    "shortcut": "",
+    "tag": [
+        "$%|_{}$"
+    ],
+    "trigger": "@msub"
+}

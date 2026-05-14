@@ -8,7 +8,7 @@
     "tag": [
         "\\begin{figure}[H]",
         "\t\\centering",
-        "\t\\includegraphics[width=]{%|}",
+        "\t\\includegraphics[width=0.7\\textwidth]{%|}",
         "\t\\caption{}",
         "\t\\label{fig:}",
         "\\end{figure}"
