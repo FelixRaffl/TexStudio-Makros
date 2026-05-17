@@ -1,0 +1,12 @@
+{
+    "abbrev": "",
+    "description": "Fraction for derivatives using \\di",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Derivative",
+    "shortcut": "",
+    "tag": [
+        "\\frac{\\di {}}{\\di {}}%|"
+    ],
+    "trigger": "@der"
+}

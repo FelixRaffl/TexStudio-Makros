@@ -1,0 +1,12 @@
+{
+    "abbrev": "",
+    "description": "Fraction for time derivatives using \\di",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Time Derivative",
+    "shortcut": "",
+    "tag": [
+        "\\frac{\\di {}}{\\di t}%|"
+    ],
+    "trigger": "@tder"
+}

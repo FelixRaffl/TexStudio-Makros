@@ -111,6 +111,30 @@ macros_data = {
         ],
         "trigger": "@item"
     },
+    "Derivative": {
+        "abbrev": "",
+        "description": "Fraction for derivatives using \\di",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Derivative",
+        "shortcut": "",
+        "tag": [
+            "\\frac{\\di {}}{\\di {}}%|"
+        ],
+        "trigger": "@der"
+    },
+    "Time_Derivative": {
+        "abbrev": "",
+        "description": "Fraction for time derivatives using \\di",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Time Derivative",
+        "shortcut": "",
+        "tag": [
+            "\\frac{\\di {}}{\\di t}%|"
+        ],
+        "trigger": "@tder"
+    },
     "Partial_Derivative": {
         "abbrev": "",
         "description": "Fraction for partial derivatives",
