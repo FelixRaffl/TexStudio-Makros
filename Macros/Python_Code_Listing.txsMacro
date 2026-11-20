@@ -1,0 +1,18 @@
+{
+    "abbrev": "",
+    "description": "Python code snippet in centered minipage",
+    "formatVersion": 1,
+    "menu": "Custom",
+    "name": "Python Code Listing",
+    "shortcut": "",
+    "tag": [
+        "\\begin{center}",
+        "\t\\begin{minipage}{0.9\\linewidth}",
+        "\t\\begin{lstlisting}[language=Python, caption={}, label={code:}]",
+        "\t%|",
+        "\t\\end{lstlisting}",
+        "\t\\end{minipage}",
+        "\\end{center}"
+    ],
+    "trigger": "@pycode"
+}

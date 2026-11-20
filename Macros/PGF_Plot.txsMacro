@@ -24,7 +24,7 @@
         "\t\t% ymin=-2, ymax=4,",
         "\t\t",
         "\t\t% 4. Grid Lines",
-        "\t\tgrid=major,                   % Options: none, major, both",
+        "\t\tgrid=major,                    % Options: none, major, both",
         "\t\tgrid style={dashed, gray!50}, % Customize grid appearance",
         "\t\t",
         "\t\t% 5. Legend Position",

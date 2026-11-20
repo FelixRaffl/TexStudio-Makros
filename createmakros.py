@@ -1,8 +1,11 @@
 import json
 import os
 
-# 1. Read the usepackages.tex file dynamically
-packages_file = "usepackages.tex"
+# Get the exact directory where this Python script is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# 1. Read the usepackages.tex file dynamically from the script's directory
+packages_file = os.path.join(script_dir, "usepackages.tex")
 packages_tag = []
 
 try:
@@ -84,6 +87,24 @@ macros_data = {
             "\\end{center}"
         ],
         "trigger": "@code"
+    },
+    "Python_Code_Listing": {
+        "abbrev": "",
+        "description": "Python code snippet in centered minipage",
+        "formatVersion": 1,
+        "menu": "Custom",
+        "name": "Python Code Listing",
+        "shortcut": "",
+        "tag": [
+            "\\begin{center}",
+            "\t\\begin{minipage}{0.9\\linewidth}",
+            "\t\\begin{lstlisting}[language=Python, caption={}, label={code:}]",
+            "\t%|",
+            "\t\\end{lstlisting}",
+            "\t\\end{minipage}",
+            "\\end{center}"
+        ],
+        "trigger": "@pycode"
     },
     "Fraction": {
         "abbrev": "",
@@ -258,7 +279,7 @@ macros_data = {
             "\t\t% ymin=-2, ymax=4,",
             "\t\t",
             "\t\t% 4. Grid Lines",
-            "\t\tgrid=major,                   % Options: none, major, both",
+            "\t\tgrid=major,                    % Options: none, major, both",
             "\t\tgrid style={dashed, gray!50}, % Customize grid appearance",
             "\t\t",
             "\t\t% 5. Legend Position",
@@ -341,24 +362,24 @@ for i in range(1, 7):
         "trigger": f"@tab{i}"
     }
 
-# 4. Create folder and clean up old files
-folder_name = "Macros"
-os.makedirs(folder_name, exist_ok=True)
+# 4. Create folder and clean up old files in the script's directory
+folder_path = os.path.join(script_dir, "Macros")
+os.makedirs(folder_path, exist_ok=True)
 
 # Delete existing .txsMacro files in the folder so only the new ones remain
-print(f"Räume alten Ordner '{folder_name}' auf...")
-for file in os.listdir(folder_name):
+print(f"Räume alten Ordner '{folder_path}' auf...")
+for file in os.listdir(folder_path):
     if file.endswith(".txsMacro"):
-        file_path = os.path.join(folder_name, file)
+        file_path = os.path.join(folder_path, file)
         os.remove(file_path)
 
 # 5. Write the new files
 for filename, file_content in macros_data.items():
-    full_filename = os.path.join(folder_name, f"{filename}.txsMacro")
+    full_filename = os.path.join(folder_path, f"{filename}.txsMacro")
     
     with open(full_filename, "w", encoding="utf-8") as f:
         json.dump(file_content, f, indent=4)
         
     print(f"Erfolgreich erstellt: {full_filename}")
 
-print(f"\nAlle Dateien wurden generiert und im Ordner '{folder_name}' gespeichert!")
+print(f"\nAlle Dateien wurden generiert und im Ordner '{folder_path}' gespeichert!")
